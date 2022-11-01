@@ -3,22 +3,22 @@ use std::fmt;
 struct List(Vec<i32>);
 
 impl fmt::Display for List {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        let vec = &self.0;
-        write!(f, "[")?;
+    fn fmt(&self, buffer: &mut fmt::Formatter) -> fmt::Result {
+        let vector_reference = &self.0;
+        write!(buffer, "[")?;
 
-        for (index, value) in vec.iter().enumerate() {
+        for (index, value) in vector_reference.iter().enumerate() {
             if index != 0 {
-                write!(f, ", ")?;
+                write!(buffer, ", ")?;
             }
-            write!(f, "{}: {}", index, value)?;
+            write!(buffer, "{}: {}", index, value)?;
         }
 
-        write!(f, "]")
+        write!(buffer, "]")
     }
 }
 
 fn main() {
-    let result = List(vec![1, 2, 3]);
-    println!("{}", result);
+    let vector = List(vec![1, 2, 3]);
+    println!("{}", vector);
 }
