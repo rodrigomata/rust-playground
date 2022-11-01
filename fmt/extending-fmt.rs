@@ -7,11 +7,11 @@ impl fmt::Display for List {
         let vec = &self.0;
         write!(f, "[")?;
 
-        for (count, v) in vec.iter().enumerate() {
-            if count != 0 {
+        for (index, value) in vec.iter().enumerate() {
+            if index != 0 {
                 write!(f, ", ")?;
             }
-            write!(f, "{}", v)?;
+            write!(f, "{}: {}", index, value)?;
         }
 
         write!(f, "]")
